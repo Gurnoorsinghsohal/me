@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gurnoor Singh - Web Developer</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background:black;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: #4f46e5;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(31, 41, 55, 0.75);
+      z-index: 1;
+    }
+    header .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 1rem 2rem;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 900;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+    header p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    }
+    header .btn-primary {
+      background-color: #6366f1;
+      border: none;
+      padding: 0.75rem 2rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      color: white;
+      box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+      transition: background-color 0.3s ease;
+    }
+    header .btn-primary:hover {
+      background-color: #4f46e5;
+    }
+
+    /* About Me Section */
+    section.about {
+      background: rgb(26, 25, 25);
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+    .about img {
+      flex: 1 1 280px;
+      border-radius: 16px;
+      max-width: 100%;
+      box-shadow: 0 8px 15px rgba(253, 253, 253, 0.15);
+      object-fit: cover;
+      height: 300px;
+    }
+    .about .about-text {
+      flex: 2 1 450px;
+    }
+    .about .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: rgb(153, 148, 148);
+      font-weight: 700;
+    }
+    .about .about-text p {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      color: #555;
+    }
+
+    /* Skills Section */
+    section.skills {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: rgb(26, 25, 25);
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    section.skills h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: rgb(153, 148, 148);
+      font-weight: 700;
+    }
+    .skills-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .skill {
+      flex-basis: 120px;
+      text-align: center;
+    }
+    .skill img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 0.5rem;
+      filter: drop-shadow(0 0 1px rgba(79,70,229,0.7));
+    }
+    .skill p {
+      font-weight: 600;
+      color: #444;
+    }
+
+    /* Projects Section */
+    section.projects {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: rgb(26, 25, 25);
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    section.projects h2 {
+      font-size: 2rem;
+      color: rgb(153, 148, 148);
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 1.8rem;
+    }
+    .project {
+      border-radius: 12px;
+      overflow: hidden;
+      /* box-shadow: 0 10px 15px rgb(255, 255, 255); */
+      background: black;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgb(255, 255, 255);
+    }
+    .project img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      height: 180px;
+    }
+    .project-info {
+      padding: 1rem 1.2rem;
+    }
+    .project-info h3 {
+      margin-bottom: 0.4rem;
+      color: rgb(153, 148, 148);
+    }
+    .project-info p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+    .project-info a {
+      display: inline-block;
+      margin-top: 0.8rem;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    /* .project-info a:hover { */
+      /* border-color: #ffffff; */
+    /* } */
+
+    /* Contact Section */
+    section.contact {
+      background: rgb(26, 25, 25);
+      color: #555;
+      text-align: center;
+      padding: 3rem 1rem;
+      border-radius: 12px;
+      max-width: 900px;
+      margin: 4rem auto 6rem;
+    }
+    section.contact h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: rgb(153, 148, 148);
+    }
+    section.contact p {
+      font-size: 1.2rem;
+      margin-bottom: 1.8rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    section.contact .contact-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #ffffff;
+      margin: 0 auto 1.5rem;
+      object-fit: cover;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    section.contact a.social-link {
+      /* margin: 0 0.7rem; */
+      /* color: #c7d2fe; */
+      /* font-size: 1.6rem; */
+      /* transition: color 0.3s ease; */
+      /* display: inline-block; */
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 1rem;
+      background: rgb(0, 0, 0);
+      border-radius: 12px;
+      box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+      color: rgb(153, 148, 148);
+    }
+    section.contact a.social-link:hover {
+      /* color: #eef2ff; */
+       transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgb(229, 228, 228);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      header p {
+        font-size: 1.1rem;
+      }
+      .about {
+        flex-direction: column;
+      }
+      .about img {
+        height: 250px;
+      }
+    }
+  </style>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pOuw+pX9cLjhqjE2AJ+UG3MoRu3eefjBwyiP9CF96vruIN7yaqzQelO+TkOfvDj4T3eERXtmK9ZUE8y1I6l1HQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+
+  <header>
+    <div class="hero-content">
+      <h1>Hi, I'm Gurnoor Singh</h1>
+      <p>A Passionate Web Developer Crafting Modern & Engaging Websites</p>
+    </div>
+  </header>
+
+  <section class="about" id="about">
+    <img src="IMG_3354 2.jpeg">
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>Hello! I'm Gurnoor Singh, a dedicated web developer with expertise in crafting fast, responsive, and aesthetically pleasing websites. I love turning ideas into reality using clean and efficient code.</p>
+      <p>With a passion for learning and creativity, I specialize in modern front-end technologies and enjoy bringing innovative solutions to life.</p>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-list" aria-label="List of web development skills">
+      <div class="skill">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 Icon" />
+        <p>HTML5</p>
+      </div>
+      <div class="skill">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3 Icon" />
+        <p>CSS3</p>
+      </div>
+      <div class="skill">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Icon" />
+        <p>JavaScript</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <h2>Featured Projects</h2>
+    <div class="project-grid" aria-label="Featured web development projects">
+      <div class="project" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Project 1 Screenshot" />
+        <div class="project-info">
+          <h3>Portfolio Website</h3>
+          <p>A responsive portfolio to showcase my skills and projects.</p>
+          <a href="#" target="_blank" rel="noopener noreferrer">View Project</a>
+        </div>
+      </div>
+      <div class="project" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Project 2 Screenshot" />
+        <div class="project-info">
+          <h3>E-commerce Store</h3>
+          <p>Modern, user-friendly e-commerce website with payment integration.</p>
+          <a href="#" target="_blank" rel="noopener noreferrer">View Project</a>
+        </div>
+      </div>
+      <div class="project" tabindex="0">
+        <img src="blogging-tips.jpg">
+        <div class="project-info">
+          <h3>Blog Platform</h3>
+          <p>A clean blogging platform with real-time commenting features.</p>
+          <a href="#" target="_blank" rel="noopener noreferrer">View Project</a>
+        </div>
+      </div>
+      <div class="project" tabindex="0">
+        <img src="download.jpeg">
+        <div class="project-info">
+          <h3>Religious Platform</h3>
+          <p>A Religious platform which is designed to foster spiritual growth, connect individuals with their faith communities, and provide access to religious content.</p>
+          <a href="https://gurnoorsinghsohal.github.io/nitnem/index.html" target="_blank">View Project</a>
+        </div>
+      </div>
+       <div class="project" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Project 3 Screenshot" />
+        <div class="project-info">
+          <h3>Platform For Shops</h3>
+          <p>A platform which can be used to get orders online.</p>
+          <a href="#" target="_blank" rel="noopener noreferrer">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <img class="contact-photo" src="IMG_3354 2.jpeg" />
+    <h2>Contact Me</h2>
+    <p>If you'd like to work together or just want to say hi, feel free to reach out!</p>
+    <hr>
+    <br>
+    <div>
+      <!-- <button> -->
+      <!-- <a class="social-link" href="https://linkedin.com/in/gurnoorsingh" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a> -->
+      <!-- </button> -->
+      <!-- <a class="social-link" href="https://github.com/gurnoorsingh" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a> -->
+      <button>
+      <a class="social-link" href="mailto:gurnoorsingh2812@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i>Contact Through E-Mail</a>
+      </button>
+    </div>
+  </section>
+
+</body>
+</html>
+
